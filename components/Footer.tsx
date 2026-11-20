@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { ArrowUp, Github, Linkedin, Mail, Heart, Terminal } from "lucide-react";
 
 export function Footer() {
@@ -19,8 +20,14 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand & Identity */}
           <div className="flex items-center gap-3">
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-500 flex items-center justify-center text-white shadow-xs">
-              <Terminal className="w-4 h-4" />
+            <div className="h-8 w-8 rounded-lg overflow-hidden border border-slate-200/80 dark:border-white/20 shadow-xs relative bg-slate-100 dark:bg-slate-800 shrink-0">
+              <Image
+                src="/profile.jpg"
+                alt="Mahmudul Hasan Pulok"
+                width={32}
+                height={32}
+                className="w-full h-full object-cover object-top"
+              />
             </div>
             <div>
               <p className="text-sm font-bold text-slate-900 dark:text-white">

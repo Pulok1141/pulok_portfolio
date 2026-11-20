@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
 import {
@@ -76,14 +77,21 @@ export function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo / Monogram */}
+          {/* Logo / Profile Avatar */}
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, "#home")}
             className="group flex items-center gap-2.5 font-bold tracking-tight text-slate-900 dark:text-white"
           >
-            <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-500 flex items-center justify-center text-white shadow-sm shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200">
-              <Terminal className="w-5 h-5" />
+            <div className="h-9 w-9 rounded-xl overflow-hidden border border-slate-200/80 dark:border-white/20 shadow-sm shadow-blue-500/10 group-hover:scale-105 group-hover:border-blue-500/50 transition-all duration-200 relative bg-slate-100 dark:bg-slate-800 shrink-0">
+              <Image
+                src="/profile.jpg"
+                alt="Mahmudul Hasan Pulok"
+                width={36}
+                height={36}
+                priority
+                className="w-full h-full object-cover object-top"
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-sm font-semibold tracking-tight text-slate-900 dark:text-slate-100">
