@@ -3,7 +3,16 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
-import { Sun, Moon, Menu, X, Terminal, ArrowUpRight } from "lucide-react";
+import {
+  Sun,
+  Moon,
+  Menu,
+  X,
+  Terminal,
+  ArrowUpRight,
+  FileText,
+  Download,
+} from "lucide-react";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -114,8 +123,8 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Actions: Theme Toggle & GitHub CTA */}
-          <div className="flex items-center gap-2.5">
+          {/* Actions: Theme Toggle, View CV, GitHub CTA */}
+          <div className="flex items-center gap-2">
             <button
               onClick={toggleTheme}
               aria-label="Toggle dark/light mode"
@@ -128,6 +137,28 @@ export function Navbar() {
               )}
             </button>
 
+            {/* Desktop View CV */}
+            <a
+              href="/Mahmudul_Hasan_Pulok_CV_Updated_Latest.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-500/40 transition-all duration-200 shadow-xs"
+            >
+              <FileText className="w-3.5 h-3.5 text-blue-500" />
+              <span>CV</span>
+            </a>
+
+            {/* Desktop Download CV Icon */}
+            <a
+              href="/Mahmudul_Hasan_Pulok_CV_Updated_Latest.pdf"
+              download="Mahmudul_Hasan_Pulok_CV_Updated_Latest.pdf"
+              title="Download CV"
+              className="hidden lg:inline-flex items-center p-2 text-xs font-medium rounded-xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/40 transition-all duration-200 shadow-xs"
+            >
+              <Download className="w-4 h-4 text-emerald-500" />
+            </a>
+
+            {/* GitHub */}
             <a
               href="https://github.com/Pulok1141"
               target="_blank"
@@ -178,6 +209,28 @@ export function Navbar() {
                   </a>
                 );
               })}
+
+              {/* Mobile CV actions */}
+              <div className="pt-2 grid grid-cols-2 gap-2">
+                <a
+                  href="/Mahmudul_Hasan_Pulok_CV_Updated_Latest.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 text-xs font-semibold rounded-lg border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200"
+                >
+                  <FileText className="w-3.5 h-3.5 text-blue-500" />
+                  <span>View CV</span>
+                </a>
+                <a
+                  href="/Mahmudul_Hasan_Pulok_CV_Updated_Latest.pdf"
+                  download="Mahmudul_Hasan_Pulok_CV_Updated_Latest.pdf"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 text-xs font-semibold rounded-lg border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200"
+                >
+                  <Download className="w-3.5 h-3.5 text-emerald-500" />
+                  <span>Download CV</span>
+                </a>
+              </div>
+
               <div className="pt-2">
                 <a
                   href="https://github.com/Pulok1141"

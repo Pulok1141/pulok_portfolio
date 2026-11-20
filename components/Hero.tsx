@@ -1,8 +1,21 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Github, Mail, Sparkles, Code2, Cpu, Layout } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Github,
+  Mail,
+  Sparkles,
+  Code2,
+  Cpu,
+  Layout,
+  FileText,
+  Download,
+  ExternalLink,
+} from "lucide-react";
 
 export function Hero() {
   const handleScrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -29,7 +42,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-200/90 dark:border-white/10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-xs mb-8"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-200/90 dark:border-white/10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-xs mb-6"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -38,6 +51,42 @@ export function Hero() {
           <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
             Available for Software Engineering & ML Roles
           </span>
+        </motion.div>
+
+        {/* Profile Picture */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.05, ease: "easeOut" }}
+          className="relative mx-auto mb-6 w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 group"
+        >
+          {/* Subtle Ambient Radial Glow Behind Portrait */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500 via-indigo-500 to-cyan-400 blur-xl opacity-50 dark:opacity-40 -z-10 group-hover:opacity-75 transition-opacity duration-500" />
+
+          {/* Premium Glowing Gradient Border Frame */}
+          <div className="w-full h-full p-1.5 rounded-full bg-gradient-to-tr from-blue-600 via-indigo-500 to-cyan-400 shadow-xl shadow-blue-500/20 group-hover:scale-[1.02] transition-transform duration-300">
+            <div className="w-full h-full rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800 border-2 border-white dark:border-slate-900 relative">
+              <Image
+                src="/profile.jpg"
+                alt="Mahmudul Hasan Pulok"
+                width={220}
+                height={220}
+                priority
+                className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+
+          {/* Active online indicator */}
+          <div
+            title="Active & Ready to collaborate"
+            className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 p-1 rounded-full bg-white dark:bg-slate-900 shadow-md"
+          >
+            <span className="relative flex h-3.5 w-3.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-white dark:border-slate-900"></span>
+            </span>
+          </div>
         </motion.div>
 
         {/* Hero Name Headline */}
@@ -71,30 +120,54 @@ export function Hero() {
           I build mathematically sound machine learning pipelines and seamless modern web applications.
         </motion.p>
 
-        {/* Action Buttons */}
+        {/* Action Buttons: GitHub, View CV, Download CV, Contact Me */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          className="mt-10 flex flex-wrap items-center justify-center gap-3.5"
         >
+          {/* View GitHub */}
           <a
             href="https://github.com/Pulok1141"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-medium text-sm text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5"
           >
             <Github className="w-4 h-4 transition-transform group-hover:scale-110" />
             <span>View GitHub</span>
             <ArrowUpRight className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" />
           </a>
 
+          {/* View CV Option */}
+          <a
+            href="/Mahmudul_Hasan_Pulok_CV_Updated_Latest.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-white/10 hover:border-blue-500/50 hover:text-blue-600 dark:hover:text-blue-400 shadow-xs hover:shadow-sm transition-all duration-200 transform hover:-translate-y-0.5"
+          >
+            <FileText className="w-4 h-4 text-blue-500 group-hover:scale-110 transition-transform" />
+            <span>View CV</span>
+            <ExternalLink className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" />
+          </a>
+
+          {/* Download CV Option */}
+          <a
+            href="/Mahmudul_Hasan_Pulok_CV_Updated_Latest.pdf"
+            download="Mahmudul_Hasan_Pulok_CV_Updated_Latest.pdf"
+            className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-white/10 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 shadow-xs hover:shadow-sm transition-all duration-200 transform hover:-translate-y-0.5"
+          >
+            <Download className="w-4 h-4 text-emerald-500 group-hover:scale-110 transition-transform" />
+            <span>Download CV</span>
+          </a>
+
+          {/* Contact Me */}
           <a
             href="#contact"
             onClick={handleScrollToContact}
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-medium text-sm text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 shadow-xs hover:shadow-sm transition-all duration-200 transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm text-slate-700 dark:text-slate-300 bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200/70 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/20 shadow-xs hover:shadow-sm transition-all duration-200 transform hover:-translate-y-0.5"
           >
-            <Mail className="w-4 h-4 text-blue-500" />
+            <Mail className="w-4 h-4 text-indigo-500" />
             <span>Contact Me</span>
           </a>
         </motion.div>
