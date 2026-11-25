@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Code, Layout, Database, Wrench, Sparkles } from "lucide-react";
+import { Code, Layout, Database, Wrench, Sparkles, ArrowRight } from "lucide-react";
 
 interface SkillCategory {
   title: string;
@@ -73,24 +74,34 @@ export function Skills() {
     <section id="skills" className="py-24 relative overflow-hidden bg-slate-50/50 dark:bg-slate-950/30">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="text-left mb-14"
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-900/60 mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>02 // Capabilities</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
-            Technical Skills
-          </h2>
-          <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl">
-            A comprehensive overview of programming languages, libraries, machine learning frameworks, and graphics toolsets I leverage to engineer end-to-end software solutions.
-          </p>
-        </motion.div>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5 }}
+            className="text-left"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-900/60 mb-3">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>02 // Capabilities</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Technical Skills
+            </h2>
+            <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl">
+              A comprehensive overview of programming languages, libraries, machine learning frameworks, and graphics toolsets I leverage to engineer end-to-end software solutions.
+            </p>
+          </motion.div>
+
+          <Link
+            href="/skills"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors group shrink-0"
+          >
+            <span>Interactive Skills Matrix</span>
+            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
 
         {/* Categories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

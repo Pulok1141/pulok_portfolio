@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Mahmudul Hasan Pulok | Portfolio",
@@ -51,7 +53,16 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased bg-background text-foreground selection:bg-blue-500 selection:text-white">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors relative selection:bg-blue-600 selection:text-white">
+            <div className="fixed inset-0 bg-grid-pattern pointer-events-none -z-10 opacity-70" />
+            <Navbar />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

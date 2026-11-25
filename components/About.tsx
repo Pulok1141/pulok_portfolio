@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { GraduationCap, BrainCircuit, MonitorSmartphone, Layers, Compass, CheckCircle2 } from "lucide-react";
+import { GraduationCap, BrainCircuit, MonitorSmartphone, Layers, Compass, CheckCircle2, ArrowRight } from "lucide-react";
 
 export function About() {
   const highlights = [
@@ -27,21 +28,31 @@ export function About() {
     <section id="about" className="py-24 relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="text-left mb-12"
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-900/60 mb-3">
-            <Compass className="w-3.5 h-3.5" />
-            <span>01 // Background & Philosophy</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
-            About Me
-          </h2>
-        </motion.div>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5 }}
+            className="text-left"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-900/60 mb-3">
+              <Compass className="w-3.5 h-3.5" />
+              <span>01 // Background & Philosophy</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+              About Me
+            </h2>
+          </motion.div>
+
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors group"
+          >
+            <span>Read Full Biography & Education</span>
+            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
 
         {/* Narrative Card */}
         <motion.div

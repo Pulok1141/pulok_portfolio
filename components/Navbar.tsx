@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
 import {
@@ -9,63 +11,34 @@ import {
   Moon,
   Menu,
   X,
-  Terminal,
   ArrowUpRight,
   FileText,
   Download,
 } from "lucide-react";
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Skills", href: "/skills" },
+  { name: "Projects", href: "/projects" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {
   const { theme, toggleTheme } = useTheme();
-  const [activeSection, setActiveSection] = useState("home");
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-
-      const sections = navItems.map((item) => item.href.substring(1));
-      const scrollPosition = window.scrollY + 120;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i]);
-        if (section) {
-          const top = section.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveSection(sections[i]);
-            break;
-          }
-        }
-      }
     };
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    setMobileMenuOpen(false);
-    const targetId = href.substring(1);
-    const element = document.getElementById(targetId);
-    if (element) {
-      const offsetTop = element.offsetTop - 80;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <header
@@ -78,9 +51,8 @@ export function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo / Profile Avatar */}
-          <a
-            href="#home"
-            onClick={(e) => handleNavClick(e, "#home")}
+          <Link
+            href="/"
             className="group flex items-center gap-2.5 font-bold tracking-tight text-slate-900 dark:text-white"
           >
             <div className="h-9 w-9 rounded-xl overflow-hidden border border-slate-200/80 dark:border-white/20 shadow-sm shadow-blue-500/10 group-hover:scale-105 group-hover:border-blue-500/50 transition-all duration-200 relative bg-slate-100 dark:bg-slate-800 shrink-0">
@@ -101,17 +73,19 @@ export function Navbar() {
                 Portfolio
               </span>
             </div>
-          </a>
+          </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Multi-Page Navigation */}
           <nav className="hidden md:flex items-center gap-1 bg-slate-100/70 dark:bg-slate-900/60 p-1.5 rounded-full border border-slate-200/70 dark:border-white/10 backdrop-blur-md">
             {navItems.map((item) => {
-              const isActive = activeSection === item.href.substring(1);
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href)}
                   className={`relative px-4 py-1.5 text-xs font-medium rounded-full transition-colors duration-200 ${
                     isActive
                       ? "text-blue-600 dark:text-white font-semibold"
@@ -126,12 +100,12 @@ export function Navbar() {
                     />
                   )}
                   {item.name}
-                </a>
+                </Link>
               );
             })}
           </nav>
 
-          {/* Actions: Theme Toggle, View CV, GitHub CTA */}
+          {/* Actions: Theme Toggle, View CV, Download CV, GitHub CTA */}
           <div className="flex items-center gap-2">
             <button
               onClick={toggleTheme}
@@ -201,12 +175,15 @@ export function Navbar() {
           >
             <div className="px-4 py-4 space-y-1">
               {navItems.map((item) => {
-                const isActive = activeSection === item.href.substring(1);
+                const isActive =
+                  item.href === "/"
+                    ? pathname === "/"
+                    : pathname === item.href || pathname.startsWith(`${item.href}/`);
                 return (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href)}
+                    onClick={() => setMobileMenuOpen(false)}
                     className={`block px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                       isActive
                         ? "bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 font-semibold"
@@ -214,7 +191,7 @@ export function Navbar() {
                     }`}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 );
               })}
 
