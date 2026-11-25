@@ -220,6 +220,89 @@ export default function AboutPage() {
             </div>
           ))}
         </div>
+
+        {/* Academic Credentials Table (Part-B Requirement) */}
+        <div className="mt-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 p-6 shadow-xs overflow-x-auto">
+          <h3 className="text-base font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+            <GraduationCap className="w-4 h-4 text-blue-500" />
+            <span>Academic Qualifications Matrix (Table)</span>
+          </h3>
+          <table className="w-full text-left text-xs sm:text-sm border-collapse">
+            <thead>
+              <tr className="border-b border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400 font-semibold">
+                <th className="py-2.5 px-3">Examination / Degree</th>
+                <th className="py-2.5 px-3">Institution</th>
+                <th className="py-2.5 px-3">Board / University</th>
+                <th className="py-2.5 px-3">Year</th>
+                <th className="py-2.5 px-3">Major / Field</th>
+                <th className="py-2.5 px-3">Status</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 dark:divide-white/5 text-slate-700 dark:text-slate-300">
+              <tr className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition-colors">
+                <td className="py-3 px-3 font-semibold text-slate-900 dark:text-white">BSc in CSE</td>
+                <td className="py-3 px-3">Daffodil International University</td>
+                <td className="py-3 px-3">DIU</td>
+                <td className="py-3 px-3">2023 – Present</td>
+                <td className="py-3 px-3">Computer Science & Engineering</td>
+                <td className="py-3 px-3">
+                  <span className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400">
+                    Enrolled (Final Year)
+                  </span>
+                </td>
+              </tr>
+              <tr className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition-colors">
+                <td className="py-3 px-3 font-semibold text-slate-900 dark:text-white">HSC</td>
+                <td className="py-3 px-3">Savar Government College</td>
+                <td className="py-3 px-3">Dhaka Board</td>
+                <td className="py-3 px-3">2021</td>
+                <td className="py-3 px-3">Science (Physics & Math)</td>
+                <td className="py-3 px-3">
+                  <span className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
+                    Passed
+                  </span>
+                </td>
+              </tr>
+              <tr className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition-colors">
+                <td className="py-3 px-3 font-semibold text-slate-900 dark:text-white">SSC</td>
+                <td className="py-3 px-3">Chapain New Model High School</td>
+                <td className="py-3 px-3">Dhaka Board</td>
+                <td className="py-3 px-3">2019</td>
+                <td className="py-3 px-3">Science</td>
+                <td className="py-3 px-3">
+                  <span className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
+                    Passed
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* Engineering Methodology (Ordered List - Part-B Requirement) */}
+        <div className="mt-8 p-6 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 shadow-xs">
+          <h3 className="text-base font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+            <Layers className="w-4 h-4 text-purple-500" />
+            <span>End-to-End Engineering Methodology (Ordered Workflow)</span>
+          </h3>
+          <ol className="list-decimal list-inside space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+            <li>
+              <strong className="text-slate-900 dark:text-white">Problem Formulation:</strong> Deconstructing complex real-world challenges into mathematical models and requirements.
+            </li>
+            <li>
+              <strong className="text-slate-900 dark:text-white">Data Pipeline Engineering:</strong> Mining, preprocessing, and structuring unstructured video/text data.
+            </li>
+            <li>
+              <strong className="text-slate-900 dark:text-white">Algorithmic & ML Training:</strong> Designing neural architectures and executing Optuna hyperparameter trials.
+            </li>
+            <li>
+              <strong className="text-slate-900 dark:text-white">B2B Frontend Architecture:</strong> Developing accessible, responsive, and intuitive reactive interfaces.
+            </li>
+            <li>
+              <strong className="text-slate-900 dark:text-white">Deployment & Verification:</strong> Containerizing services via Docker, rigorous cross-browser testing, and cloud deployment.
+            </li>
+          </ol>
+        </div>
       </div>
 
       {/* Soft Skills & Languages */}

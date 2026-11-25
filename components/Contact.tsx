@@ -20,6 +20,9 @@ export function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    topic: "job",
+    inquiryType: "hiring",
+    agreeConsent: true,
     message: "",
   });
   const [submitting, setSubmitting] = useState(false);
@@ -34,7 +37,14 @@ export function Contact() {
     setTimeout(() => {
       setSubmitting(false);
       setSubmitted(true);
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        topic: "job",
+        inquiryType: "hiring",
+        agreeConsent: true,
+        message: "",
+      });
       setTimeout(() => setSubmitted(false), 5000);
     }, 900);
   };
@@ -263,6 +273,71 @@ export function Contact() {
                     </div>
                   </div>
 
+                  {/* Dropdown Select Option */}
+                  <div>
+                    <label
+                      htmlFor="topic"
+                      className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5"
+                    >
+                      Inquiry Subject (Dropdown)
+                    </label>
+                    <select
+                      id="topic"
+                      value={formData.topic}
+                      onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all cursor-pointer"
+                    >
+                      <option value="job">Software Engineering / Machine Learning Role</option>
+                      <option value="research">Deep Learning & Academic Research Collaboration</option>
+                      <option value="consulting">B2B Frontend Architecture & Systems Consulting</option>
+                      <option value="general">General Networking & Technical Discussion</option>
+                    </select>
+                  </div>
+
+                  {/* Radio Buttons Option */}
+                  <div>
+                    <span className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                      Inquiry Category (Radio Selection)
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                      <label className="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50/60 dark:bg-slate-800/50 cursor-pointer text-xs text-slate-700 dark:text-slate-300 hover:border-blue-500/30">
+                        <input
+                          type="radio"
+                          name="inquiryType"
+                          value="hiring"
+                          checked={formData.inquiryType === "hiring"}
+                          onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
+                          className="text-blue-600 focus:ring-blue-500"
+                        />
+                        <span>Hiring / Career</span>
+                      </label>
+
+                      <label className="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50/60 dark:bg-slate-800/50 cursor-pointer text-xs text-slate-700 dark:text-slate-300 hover:border-blue-500/30">
+                        <input
+                          type="radio"
+                          name="inquiryType"
+                          value="collaboration"
+                          checked={formData.inquiryType === "collaboration"}
+                          onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
+                          className="text-blue-600 focus:ring-blue-500"
+                        />
+                        <span>Collaboration</span>
+                      </label>
+
+                      <label className="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50/60 dark:bg-slate-800/50 cursor-pointer text-xs text-slate-700 dark:text-slate-300 hover:border-blue-500/30">
+                        <input
+                          type="radio"
+                          name="inquiryType"
+                          value="general"
+                          checked={formData.inquiryType === "general"}
+                          onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
+                          className="text-blue-600 focus:ring-blue-500"
+                        />
+                        <span>General Inquiry</span>
+                      </label>
+                    </div>
+                  </div>
+
                   <div>
                     <label
                       htmlFor="message"
@@ -273,12 +348,29 @@ export function Contact() {
                     <textarea
                       id="message"
                       required
-                      rows={5}
+                      rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Hi Mahmudul, I'd like to talk about..."
                       className="w-full px-3.5 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all resize-none"
                     />
+                  </div>
+
+                  {/* Checkbox Option */}
+                  <div className="flex items-start gap-2.5 pt-1">
+                    <input
+                      type="checkbox"
+                      id="agreeConsent"
+                      checked={formData.agreeConsent}
+                      onChange={(e) => setFormData({ ...formData, agreeConsent: e.target.checked })}
+                      className="mt-0.5 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                    />
+                    <label
+                      htmlFor="agreeConsent"
+                      className="text-xs text-slate-600 dark:text-slate-400 cursor-pointer"
+                    >
+                      I confirm that the details provided are accurate and consent to receive a response via email.
+                    </label>
                   </div>
 
                   <button
